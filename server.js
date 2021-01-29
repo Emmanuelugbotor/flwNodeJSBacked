@@ -1,5 +1,7 @@
+require("express-async-errors")
 const express =  require("express");
 const bodyParser =  require("body-parser")
+const error =  require("./errorHandler/error.handler")
 const app =  express();
 
 app.use(bodyParser.json())
@@ -13,7 +15,7 @@ app.all('/*', (req, res, next)=>{
     res.contentType("application/json;charset=utf-8")
     next()
 })
-
+app.use(error)
 require("./routes/users.routes")(app)
 const PORT = process.env.PORT || 8080;
 app.listen(PORT, ()=>{console.log(`server running on port ${PORT}`)});

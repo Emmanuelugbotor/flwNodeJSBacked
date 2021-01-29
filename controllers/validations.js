@@ -14,11 +14,10 @@ exports.userObject = () => {
 };
 
 exports.validateRule = (rule, data) => {
-  
-  if ( typeof rule === undefined || typeof rule === null ) {
+  if ( !rule ) {
     return returnMsg("rule is required.", "error", null);
   }
-  if ( typeof data === undefined || typeof data === undefined) {
+  if ( !data ) {
     return returnMsg("data is required.", "error", null);
   } 
   if (typeof rule != "object") {

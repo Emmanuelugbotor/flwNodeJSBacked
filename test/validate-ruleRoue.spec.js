@@ -28,7 +28,7 @@ describe("/validate-rule Post Route Test Case", () => {
       status: "error",
       data: null,
     };
-    let body = { rule: "", data: "" };
+    let body = { rule: "rule must be an object", data: "data Can be a string" };
     value = await supertest(app)
       .post("/validate-rule")
       .set("Accept", "application/json")
