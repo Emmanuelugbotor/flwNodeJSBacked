@@ -1,7 +1,7 @@
-const {returnMsg, signValidation} = require('./logics')
+const {returnMsg, signValidation, jsonParse} = require('./logics')
 exports.userObject = () => {
   return {
-    message: "Rule-Validation API",
+    message: "Rule-Validation API.",
     status: "success",
     data: {
       name: "UGBOTOR EMMANUEL",
@@ -13,13 +13,14 @@ exports.userObject = () => {
   };
 };
 
-exports.validateRule = (rule, data) => { // validate against invalid json payload
-  if (!rule) {
+exports.validateRule = (rule, data) => {
+  
+  if ( typeof rule === undefined || typeof rule === null ) {
     return returnMsg("rule is required.", "error", null);
   }
-  if (!data) {
+  if ( typeof data === undefined || typeof data === undefined) {
     return returnMsg("data is required.", "error", null);
-  }
+  } 
   if (typeof rule != "object") {
     return returnMsg("rule should be an object.", "error", null);
   }
@@ -37,7 +38,8 @@ exports.validateRule = (rule, data) => { // validate against invalid json payloa
   }
   if (!rule.field.includes(".") && !data.hasOwnProperty(rule.field)) {
     return returnMsg(`field ${rule.field} is missing from data.`,  "error",  null);
-  } else {
+  }
+  else {
     return signValidation( rule.field, ruleFieldVal, rule.condition, rule.condition_value );
   }
 };

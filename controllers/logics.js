@@ -1,6 +1,7 @@
-exports.returnMsg = (msg, status, data) => {
-  return { msg, status, data };
+exports.returnMsg = (message, status, data) => {
+  return { message, status, data };
 };
+
 
 exports.signValidation = (
   nameOfField,
@@ -25,7 +26,7 @@ exports.signValidation = (
         : "";
       if (result == true) {
         return {
-          message: `field ${nameOfField} successfully validated.`,
+          message: `field ${nameOfField} successfully validation.`,
           status: "success",
           data: {
             validation: {
@@ -39,7 +40,7 @@ exports.signValidation = (
         };
       } else if (result == false) {
         return {
-          message: `field ${nameOfField} failed  validated.`,
+          message: `field ${nameOfField} failed  validation.`,
           status: "error",
           data: {
             validation: {
@@ -55,7 +56,7 @@ exports.signValidation = (
     }
   } catch (error) {
     return {
-      message: `field ${nameOfField} failed  validated.`,
+      message: `field ${nameOfField} failed  validation.`,
       status: "error",
       data: {
         validation: {

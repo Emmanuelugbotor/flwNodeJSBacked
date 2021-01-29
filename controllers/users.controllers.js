@@ -12,10 +12,10 @@ exports.validateRule = (req, res) => {
   validateRule.status === "error"
     ? res
         .status(400)
-        .contentType("application/json")
+        .set('content-Type', 'application/json')
         .end(JSON.stringify(validateRule))
     : res
         .status(200)
         .contentType("application/json")
-        .end(JSON.stringify(validateRule));
+        .send(JSON.stringify(validateRule));
 };
